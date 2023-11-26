@@ -8,24 +8,24 @@ project(imutils_cpp
 include(GNUInstallDirs)
 
 find_package(OpenCV REQUIRED)
-find_package(CURL REQUIRED)
+# find_package(CURL REQUIRED)
 
 if (MSVC AND BUILD_SHARED_LIBS)
     set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS TRUE)
 endif()
 
 add_library(${PROJECT_NAME} src/text.cpp src/paths.cpp src/perspective.cpp src/convenience.cpp)
-set(IMUTILS_HEADERS include/imutils/text.h include/imutils/paths.h include/imutils/perspective.h include/imutils/convenience.h)
+set(IMUTILS_HEADERS include/imutils/text.h include/imutils/paths.h include/imutils/perspective.h include/imutils/convenience.h include/imutils/imutils.h)
 set_target_properties(${PROJECT_NAME} PROPERTIES
     VERSION ${PROJECT_VERSION}
     PUBLIC_HEADER "${IMUTILS_HEADERS}"
 )
-target_link_libraries(imutils_cpp opencv_core opencv_imgcodecs opencv_imgproc CURL::libcurl)
+target_link_libraries(imutils_cpp opencv_core opencv_imgcodecs opencv_imgproc)
 target_compile_features(${PROJECT_NAME} PRIVATE cxx_std_17)
 if (MSVC)
     target_compile_options(imutils_cpp PRIVATE "/permissive-")
 endif()
-target_include_directories(${PROJECT_NAME} PRIVATE include)
+target_include_directories(${PROJECT_NAME} PRIVATE include/imutils)
 target_include_directories(${PROJECT_NAME} PRIVATE src)
 
 install(TARGETS ${PROJECT_NAME}

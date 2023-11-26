@@ -1,37 +1,34 @@
 //
 // Created by jonsnow on 07/02/22.
 //
-#include "filesystem"
-#include "bits/stdc++.h"
-#include "../include/imutils/paths.h"
+
+#include "paths.hpp"
+
+#include <filesystem>
 
 namespace fs = std::filesystem;
 
-std::vector<std::string> Path::listImages(std::string basePath, std::string contains) {
+/**
+* @var imageTypes
+* @brief contains all types of image extensions supported by Opencv
+**/
+std::vector<std::string> imageTypes = {".jpg", ".jpeg", ".png", ".bmp", ".tif", ".tiff"};
 
+std::vector<std::string> imutils::listImages(std::string basePath, std::string contains) {
     return listFiles(basePath, imageTypes, contains = contains);
 }
 
-std::vector<std::string> Path::listFiles(std::string basePath, std::vector<std::string> validExts, std::string contains
-) {
+std::vector<std::string> imutils::listFiles(std::string basePath, std::vector<std::string> validExts, std::string contains) {
     std::vector<std::string> filesDirs;
-    for (const auto &dirEntry: fs::recursive_directory_iterator(basePath)) {
+    std::filesystem::path path = basePath;
+    for (const auto& dirEntry : fs::recursive_directory_iterator(path)) {
         std::filesystem::path file = dirEntry.path();
-        if (contains != "" and ((std::string) file.filename()).find(contains) == std::string::npos) {
+        if (contains != "" and (file.filename().string()).find(contains) == std::string::npos)
             continue;
-        }
-        if (validExts.empty()) {
-            filesDirs.push_back(dirEntry.path());
-        } else {
-            if (std::find(validExts.begin(), validExts.end(), file.extension()) != validExts.end()){
-                filesDirs.push_back(dirEntry.path());
-
-            }
-
-        }
+        if (validExts.empty())
+            filesDirs.push_back(dirEntry.path().string());
+        else if (std::find(validExts.begin(), validExts.end(), file.extension()) != validExts.end())
+                filesDirs.push_back(dirEntry.path().string());
     }
     return filesDirs;
 }
-
-
-

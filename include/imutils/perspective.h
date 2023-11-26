@@ -5,29 +5,17 @@
 #pragma once
 
 #include <opencv2/core/mat.hpp>
-#include "vector"
+#include <vector>
 
 typedef std::vector<cv::Point2f> vectorpair;
 
-/** @file perspective.h **/
-/***************************************************************************//**
- *@class Perspective
- *@brief
- * The class helps to implement four point transformation on a given image
- * @fn orderPoints
- * @fn fourPointTransformation
- ******************************************************************************/
-
-class Perspective {
-private:
-        /**
+namespace imutils {
+    /**
     * @param points a vector of coordinates
     * @return Consistent order of points
     * @brief Converting vector of points to a vector with consistent order.
     **/
-        static vectorpair orderPoints(vectorpair points);
-
-public:
+    vectorpair orderPoints(vectorpair points);
 
     /**
     * @param img Image
@@ -35,6 +23,5 @@ public:
     * @return cropped Image with FPT applied.
     * @brief Applying four point transformation to the image
     **/
-    static cv::Mat fourPointTransformation(cv::Mat &img, vectorpair points);
-
+    cv::Mat fourPointTransformation(cv::Mat& img, vectorpair points);
 };

@@ -2,6 +2,7 @@
 
 #include <opencv2/core.hpp>
 #include <opencv2/imgproc.hpp>
+#include <map>
 
 void imutils::putText(cv::Mat& img, const std::string& text, cv::Point origin, int fontFace, double fontScale, cv::Scalar color, int thickness, int lineType, bool bottomLeftOrigin) {
     // Break out drawing coords

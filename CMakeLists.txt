@@ -25,7 +25,7 @@ target_compile_features(${PROJECT_NAME} PRIVATE cxx_std_17)
 if (MSVC)
     target_compile_options(imutils_cpp PRIVATE "/permissive-")
 endif()
-target_include_directories(${PROJECT_NAME} PUBLIC include/imutils)
+target_include_directories(${PROJECT_NAME} PUBLIC include)
 target_include_directories(${PROJECT_NAME} PRIVATE src)
 
 # install(TARGETS ${PROJECT_NAME}

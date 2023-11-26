@@ -2,7 +2,7 @@
 // Created by jonsnow on 16/02/22.
 //
 
-#include "convenience.hpp"
+#include "imutils/convenience.hpp"
 #include <utility>
 #include <opencv2/imgproc.hpp>
 #include <iostream>

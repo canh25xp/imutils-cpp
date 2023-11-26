@@ -15,7 +15,7 @@ if (MSVC AND BUILD_SHARED_LIBS)
 endif()
 
 add_library(${PROJECT_NAME} src/text.cpp src/paths.cpp src/perspective.cpp src/convenience.cpp)
-set(IMUTILS_HEADERS include/imutils/text.h include/imutils/paths.h include/imutils/perspective.h include/imutils/convenience.h include/imutils/imutils.h)
+set(IMUTILS_HEADERS include/imutils/text.hpp include/imutils/paths.hpp include/imutils/perspective.hpp include/imutils/convenience.hpp include/imutils/imutils.hpp)
 set_target_properties(${PROJECT_NAME} PROPERTIES
     VERSION ${PROJECT_VERSION}
     PUBLIC_HEADER "${IMUTILS_HEADERS}"

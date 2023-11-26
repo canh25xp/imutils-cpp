@@ -25,18 +25,18 @@ target_compile_features(${PROJECT_NAME} PRIVATE cxx_std_17)
 if (MSVC)
     target_compile_options(imutils_cpp PRIVATE "/permissive-")
 endif()
-target_include_directories(${PROJECT_NAME} PRIVATE include/imutils)
+target_include_directories(${PROJECT_NAME} PUBLIC include/imutils)
 target_include_directories(${PROJECT_NAME} PRIVATE src)
 
-install(TARGETS ${PROJECT_NAME}
-    EXPORT ${PROJECT_NAME}Targets
-    ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
-    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
-    RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
-    PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/imutils
-)
+# install(TARGETS ${PROJECT_NAME}
+#     EXPORT ${PROJECT_NAME}Targets
+#     ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+#     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+#     RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+#     PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/imutils
+# )
 
-install(EXPORT ${PROJECT_NAME}Targets
-    NAMESPACE imutils_cpp::
-    DESTINATION lib/cmake
-)
+# install(EXPORT ${PROJECT_NAME}Targets
+#     NAMESPACE imutils_cpp::
+#     DESTINATION lib/cmake
+# )

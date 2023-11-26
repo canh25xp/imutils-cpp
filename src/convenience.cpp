@@ -2,15 +2,12 @@
 // Created by jonsnow on 16/02/22.
 //
 
-
-
 #include "convenience.hpp"
 #include <utility>
 #include <opencv2/imgproc.hpp>
 #include <iostream>
 #include <opencv2/imgcodecs.hpp>
 // #include <curl/curl.h>
-
 
 size_t write_data(char* ptr, size_t size, size_t nmemb, void* userdata) {
     auto* stream = (std::ostringstream*) userdata;
@@ -129,8 +126,6 @@ cv::Mat imutils::autoCanny(cv::Mat img, double sigma) {
     cv::Canny(img, edged, lower, upper);
     return edged;
 }
-
-
 
 cv::Mat imutils::adjustBrightnessContrast(cv::Mat img, int brightness, double contrast) {
     int beta = 0;

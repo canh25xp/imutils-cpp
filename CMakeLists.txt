@@ -8,7 +8,7 @@ project(imutils-cpp
 include(GNUInstallDirs)
 
 find_package(OpenCV REQUIRED)
-# find_package(CURL REQUIRED)
+find_package(CURL REQUIRED)
 
 if (MSVC AND BUILD_SHARED_LIBS)
     set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS TRUE)
@@ -20,7 +20,7 @@ set_target_properties(${PROJECT_NAME} PROPERTIES
     VERSION ${PROJECT_VERSION}
     PUBLIC_HEADER "${IMUTILS_HEADERS}"
 )
-target_link_libraries(${PROJECT_NAME} opencv_core opencv_imgcodecs opencv_imgproc)
+target_link_libraries(${PROJECT_NAME} opencv_core opencv_imgcodecs opencv_imgproc CURL::libcurl)
 target_compile_features(${PROJECT_NAME} PRIVATE cxx_std_17)
 if (MSVC)
     target_compile_options(${PROJECT_NAME} PRIVATE "/permissive-")

@@ -7,7 +7,7 @@
 #include <opencv2/imgproc.hpp>
 #include <iostream>
 #include <opencv2/imgcodecs.hpp>
-// #include <curl/curl.h>
+#include <curl/curl.h>
 
 size_t write_data(char* ptr, size_t size, size_t nmemb, void* userdata) {
     auto* stream = (std::ostringstream*) userdata;
@@ -101,22 +101,22 @@ cv::Mat imutils::skeletonize(cv::Mat& img, cv::Size size, int structuring) {
     return skeleton;
 }
 
-//cv::Mat imutils::urlToImager(std::string url, int readFlag) {
-//    CURL* curl;
-//    CURLcode res;
-//    std::ostringstream stream;
-//    curl = curl_easy_init();
-//    curl_easy_setopt(curl, CURLOPT_URL, url.c_str()); //the img url
-//    curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, write_data); 
-//    curl_easy_setopt(curl, CURLOPT_WRITEDATA, &stream);
-//    res = curl_easy_perform(curl);
-//    std::string output = stream.str();
-//    curl_easy_cleanup(curl);
-//    std::vector<char> data = std::vector<char>(output.begin(), output.end());
-//    cv::Mat data_mat = cv::Mat(data);
-//    cv::Mat image = cv::imdecode(data_mat, 1);
-//    return image;
-//}
+cv::Mat imutils::urlToImager(std::string url, int readFlag) {
+   CURL* curl;
+   CURLcode res;
+   std::ostringstream stream;
+   curl = curl_easy_init();
+   curl_easy_setopt(curl, CURLOPT_URL, url.c_str()); //the img url
+   curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, write_data); 
+   curl_easy_setopt(curl, CURLOPT_WRITEDATA, &stream);
+   res = curl_easy_perform(curl);
+   std::string output = stream.str();
+   curl_easy_cleanup(curl);
+   std::vector<char> data = std::vector<char>(output.begin(), output.end());
+   cv::Mat data_mat = cv::Mat(data);
+   cv::Mat image = cv::imdecode(data_mat, 1);
+   return image;
+}
 
 cv::Mat imutils::autoCanny(cv::Mat img, double sigma) {
     double v = medianMat(img);

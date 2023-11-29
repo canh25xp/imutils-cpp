@@ -1,8 +1,8 @@
 cmake_minimum_required(VERSION 3.9)
-project(imutils_cpp
+project(imutils-cpp
     LANGUAGES CXX
     VERSION 1.0.1
-    DESCRIPTION "imutils_cpp A series of convenience functions to make basic image processing functions such as translation, rotation, resizing and skeletonization easier with OpenCV "
+    DESCRIPTION "imutils-cpp A series of convenience functions to make basic image processing functions such as translation, rotation, resizing and skeletonization easier with OpenCV "
     )
 
 include(GNUInstallDirs)
@@ -20,10 +20,10 @@ set_target_properties(${PROJECT_NAME} PROPERTIES
     VERSION ${PROJECT_VERSION}
     PUBLIC_HEADER "${IMUTILS_HEADERS}"
 )
-target_link_libraries(imutils_cpp opencv_core opencv_imgcodecs opencv_imgproc)
+target_link_libraries(${PROJECT_NAME} opencv_core opencv_imgcodecs opencv_imgproc)
 target_compile_features(${PROJECT_NAME} PRIVATE cxx_std_17)
 if (MSVC)
-    target_compile_options(imutils_cpp PRIVATE "/permissive-")
+    target_compile_options(${PROJECT_NAME} PRIVATE "/permissive-")
 endif()
 target_include_directories(${PROJECT_NAME} PUBLIC include)
 target_include_directories(${PROJECT_NAME} PRIVATE src)
@@ -37,6 +37,6 @@ target_include_directories(${PROJECT_NAME} PRIVATE src)
 # )
 
 # install(EXPORT ${PROJECT_NAME}Targets
-#     NAMESPACE imutils_cpp::
+#     NAMESPACE imutils-cpp::
 #     DESTINATION lib/cmake
 # )

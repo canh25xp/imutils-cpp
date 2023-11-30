@@ -47,7 +47,7 @@ cv::Mat imutils::fourPointTransformation(cv::Mat& img, vectorpair pts) {
             {maxWidth - 1, maxHeight - 1},
             {0,            maxHeight - 1}
     };
-    cv::Mat dst(data, CV_32FC1);
+    // cv::Mat dst(data, CV_32FC1);
     cv::Mat M = cv::getPerspectiveTransform(rect, data);
     cv::Mat output;
     cv::warpPerspective(img, output, M, {static_cast<int>(maxWidth), static_cast<int>(maxHeight)});

@@ -5,6 +5,7 @@
 #include "imutils/paths.hpp"
 
 #include <filesystem>
+#include <algorithm>
 
 namespace fs = std::filesystem;
 

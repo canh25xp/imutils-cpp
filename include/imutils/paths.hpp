@@ -5,6 +5,7 @@
 #define PATH_H
 
 #include <filesystem>
+#include <vector>
 
 namespace imutils {
     /**

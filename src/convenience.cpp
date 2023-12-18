@@ -4,8 +4,8 @@
 
 #include "imutils/convenience.hpp"
 #include <utility>
-#include <opencv2/imgproc.hpp>
 #include <iostream>
+#include <opencv2/imgproc.hpp>
 #include <opencv2/imgcodecs.hpp>
 #include <curl/curl.h>
 

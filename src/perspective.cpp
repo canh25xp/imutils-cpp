@@ -5,8 +5,13 @@
 #include "imutils/perspective.hpp"
 #include "imutils/convenience.hpp"
 
-#include <utility>
 #include <opencv2/imgproc.hpp>
+#include <opencv2/imgcodecs.hpp>
+#include <opencv2/core/mat.hpp>
+
+#include <string>
+#include <vector>
+#include <utility>
 #include <iostream>
 
 vectorpair imutils::orderPoints(vectorpair points) {

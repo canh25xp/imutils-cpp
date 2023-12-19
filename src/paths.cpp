@@ -6,6 +6,7 @@
 
 #include <filesystem>
 #include <algorithm>
+#include <vector>
 
 namespace fs = std::filesystem;
 

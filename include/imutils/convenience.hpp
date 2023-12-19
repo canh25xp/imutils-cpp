@@ -6,7 +6,8 @@
 
 #include <opencv2/imgproc.hpp>
 #include <opencv2/imgcodecs.hpp>
-#include <opencv2/core.hpp>
+#include <opencv2/core/mat.hpp>
+#include <string>
 
 size_t write_data(char* ptr, size_t size, size_t nmemb, void* userdata);
 

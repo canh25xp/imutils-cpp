@@ -14,7 +14,7 @@ namespace imutils {
 * @return Vector of Strings containing relative path of the files
 * @brief Utility for listing all the Images in directory
 **/
-std::vector<std::string> listImages(const std::filesystem::path& basePath, const std::string& contains = "");
+std::vector<std::filesystem::path> listImages(const std::filesystem::path& basePath, const std::string& contains = "");
 
 /**
 * @param basePath The directory where you want to search
@@ -23,5 +23,5 @@ std::vector<std::string> listImages(const std::filesystem::path& basePath, const
 * @return Vector of Strings containing relative path of the files
 * @brief Utility for listing all the Files in directory with valid extensions and containing words if any
 **/
-std::vector<std::string> listFiles(const std::filesystem::path& basePath, const std::vector<std::string>& validExts = {}, const std::string& contains = "");
+std::vector<std::filesystem::path> listFiles(const std::filesystem::path& basePath, const std::vector<std::string>& validExts = {}, const std::string& contains = "");
 };

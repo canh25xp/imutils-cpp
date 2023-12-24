@@ -71,7 +71,8 @@ cv::Mat imutils::resize(cv::Mat& img, int height, int width, int inter) {
     if (width == 0) {
         float r = (float) height / (float) size.height;
         dim = cv::Size(size.width * r, height);
-    } else {
+    }
+    else {
         float r = (float) width / (float) size.width;
         dim = cv::Size(width, size.height * r);
     }
@@ -102,20 +103,20 @@ cv::Mat imutils::skeletonize(cv::Mat& img, cv::Size size, int structuring) {
 }
 
 cv::Mat imutils::urlToImager(std::string url, int readFlag) {
-   CURL* curl;
-   CURLcode res;
-   std::ostringstream stream;
-   curl = curl_easy_init();
-   curl_easy_setopt(curl, CURLOPT_URL, url.c_str()); //the img url
-   curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, write_data); 
-   curl_easy_setopt(curl, CURLOPT_WRITEDATA, &stream);
-   res = curl_easy_perform(curl);
-   std::string output = stream.str();
-   curl_easy_cleanup(curl);
-   std::vector<char> data = std::vector<char>(output.begin(), output.end());
-   cv::Mat data_mat = cv::Mat(data);
-   cv::Mat image = cv::imdecode(data_mat, 1);
-   return image;
+    CURL* curl;
+    CURLcode res;
+    std::ostringstream stream;
+    curl = curl_easy_init();
+    curl_easy_setopt(curl, CURLOPT_URL, url.c_str()); //the img url
+    curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, write_data);
+    curl_easy_setopt(curl, CURLOPT_WRITEDATA, &stream);
+    res = curl_easy_perform(curl);
+    std::string output = stream.str();
+    curl_easy_cleanup(curl);
+    std::vector<char> data = std::vector<char>(output.begin(), output.end());
+    cv::Mat data_mat = cv::Mat(data);
+    cv::Mat image = cv::imdecode(data_mat, 1);
+    return image;
 }
 
 cv::Mat imutils::autoCanny(cv::Mat img, double sigma) {

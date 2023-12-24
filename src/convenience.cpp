@@ -119,6 +119,17 @@ cv::Mat imutils::urlToImager(std::string url, int readFlag) {
     return image;
 }
 
+std::filesystem::path imutils::download_image(const std::string& url, const std::filesystem::path& save_dir, int readFlag) {
+    auto download_image = urlToImager(url);
+
+    std::filesystem::create_directories(save_dir);
+    std::filesystem::path image_path = save_dir / "downloaded.jpg";
+
+    cv::imwrite(image_path.string(), download_image);
+
+    return image_path;
+}
+
 cv::Mat imutils::autoCanny(cv::Mat img, double sigma) {
     double v = medianMat(img);
     int lower = (int) fmax(0, (1.0 - sigma) * v);

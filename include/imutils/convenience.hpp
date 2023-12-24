@@ -8,6 +8,7 @@
 #include <opencv2/imgcodecs.hpp>
 #include <opencv2/core/mat.hpp>
 #include <string>
+#include <filesystem>
 
 size_t write_data(char* ptr, size_t size, size_t nmemb, void* userdata);
 
@@ -72,6 +73,13 @@ namespace imutils {
     * @brief Returns image from the specified url with the appropriate read flag applied
     **/
     cv::Mat urlToImager(std::string url, int readFlag = cv::IMREAD_COLOR);
+
+    /// @brief Download image from url
+    /// @param url the url of the image
+    /// @param save_dir where to save the downloaded image
+    /// @param readFlag type of read image
+    /// @return path to the downloaded image
+    std::filesystem::path download_image(const std::string& url, const std::filesystem::path& save_dir = "tmp", int readFlag = cv::IMREAD_COLOR);
 
     /**
     * @param img input image
